@@ -14,7 +14,7 @@
             android:id="@+id/ivIntro"
             android:layout_width="350dp"
             android:layout_height="350dp"
-            android:src="@drawable/introPic"
+            android:src="@drawable/intropic"
             android:scaleType="centerCrop"
             android:layout_margin="30dp"
             app:layout_constraintEnd_toEndOf="parent"
