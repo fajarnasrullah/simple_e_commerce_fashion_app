@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "700371084576",
+    "project_id": "ecommerceapp-6ca11",
+    "storage_bucket": "ecommerceapp-6ca11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700371084576:android:4e319a7958be41e6d6a345",
+        "android_client_info": {
+          "package_name": "com.jer.ecommerceapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxfABu6kp5uqQKKL4gZYAXeyb6hpBSRTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
