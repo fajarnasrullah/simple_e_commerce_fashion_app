@@ -3,12 +3,21 @@ package com.jer.ecommerceapp.ui
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.credentials.ClearCredentialStateRequest
+import androidx.credentials.CredentialManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.jer.ecommerceapp.adapter.BrandAdapter
 import com.jer.ecommerceapp.adapter.RecommendAdapter
 import com.jer.ecommerceapp.adapter.SliderAdapter
@@ -17,17 +26,37 @@ import com.jer.ecommerceapp.model.BrandModel
 import com.jer.ecommerceapp.model.RecommendModel
 import com.jer.ecommerceapp.model.SliderModel
 import com.jer.ecommerceapp.viewModel.MainViewModel
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel = MainViewModel()
+    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        auth = Firebase.auth
+        val firebaseUser = auth.currentUser
+
+        if (firebaseUser == null) {
+            startActivity(Intent(this@MainActivity, IntroActivity::class.java))
+            finish()
+            return
+        }
+
+        binding.btnSingOut.setOnClickListener {
+            signOut()
+        }
+
+        binding.btnNotif.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ChatActivity::class.java))
+        }
 
         viewModel.banner.observe(this) { item ->
             banners(item)
@@ -60,6 +89,18 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+
+    private fun signOut() {
+        lifecycleScope.launch {
+            val credentialManager = CredentialManager.create(this@MainActivity)
+            auth.signOut()
+            credentialManager.clearCredentialState(ClearCredentialStateRequest())
+            startActivity(Intent(this@MainActivity, IntroActivity::class.java))
+            finish()
+        }
+    }
+
 
     fun banners(images: List<SliderModel>) {
         binding.viewpagerSlider.adapter = SliderAdapter(images, binding.viewpagerSlider)

@@ -42,7 +42,21 @@ android {
     }
 }
 
+
+
+
 dependencies {
+
+    implementation ("com.midtrans:uikit:2.0.0-SANDBOX")
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
+
+    // Converter Gson untuk Retrofit
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    // Jika menggunakan coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -50,8 +64,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
     implementation("com.tbuonomo:dotsindicator:4.3")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.firebase.auth)
+    implementation(libs.googleid)
+    implementation(libs.play.services.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.firebase.ui.database)
+
     kapt ("com.github.bumptech.glide:compiler:4.16.0")
     implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.midtrans:uikit:2.0.0-SANDBOX")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

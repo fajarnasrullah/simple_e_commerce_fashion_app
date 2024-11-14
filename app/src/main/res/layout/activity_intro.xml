@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightGrey"
     tools:context=".ui.IntroActivity">
-
-
 
 
         <ImageView
@@ -28,6 +27,7 @@
             android:text="Step Into Your Style \nA World of Fashion"
             android:textAlignment="center"
             android:textSize="30sp"
+            android:textStyle="bold"
             android:textColor="@color/purple"
             android:layout_margin="30dp"
             app:layout_constraintTop_toBottomOf="@+id/ivIntro"
@@ -49,13 +49,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnIntro"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="30dp"
-        android:text="Get Started"
-        android:background="@drawable/bg_btn"
+        android:backgroundTint="@color/purple"
         android:textColor="@color/white"
         android:layout_margin="30dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,28 +67,29 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="16dp"
         android:layout_marginStart="30dp"
-        android:text="Already have an account?"
+        android:text="Don't have an account?"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/btnIntro"
-        app:layout_constraintTop_toBottomOf="@+id/btnIntro" />
+        app:layout_constraintStart_toStartOf="@+id/btnSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
     <TextView
-        android:id="@+id/btnSignIn"
+        android:id="@+id/brnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="16dp"
         android:layout_marginEnd="30dp"
-        android:text="Sign In"
+        android:layout_marginStart="30dp"
+        android:text="Register"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/purple"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/btnIntro"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignIn"
 
         app:layout_constraintStart_toEndOf="@+id/tvSign"
-        app:layout_constraintTop_toBottomOf="@+id/btnIntro" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

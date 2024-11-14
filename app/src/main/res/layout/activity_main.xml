@@ -67,10 +67,10 @@
                     app:srcCompat="@drawable/bell_icon" />
 
                 <ImageView
-                    android:id="@+id/btnSearch"
+                    android:id="@+id/btnSingOut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/search_icon" />
+                    android:src="@drawable/search_icon" />
 
             </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.jer.ecommerceapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -36,7 +37,12 @@ class CartActivity : AppCompatActivity() {
         }
 
         binding.btnCheckOut.setOnClickListener {
-            Toast.makeText(this, "The Checkout Feature Is Not Available", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "The Checkout Feature Is Not Available", Toast.LENGTH_SHORT).show()
+            val totalPrice = binding.tvTotal.text.toString().toDoubleOrNull() ?: 0.0
+            val intent = Intent(this, PaymentActivity::class.java)
+            intent.putExtra("totalPrice", totalPrice)
+            startActivity(intent)
+
         }
 
     }
