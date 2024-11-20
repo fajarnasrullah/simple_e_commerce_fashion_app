@@ -16,6 +16,7 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.jer.ecommerceapp.adapter.BrandAdapter
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
         val firebaseUser = auth.currentUser
+        binding.tvName.text = firebaseUser?.displayName
 
         if (firebaseUser == null) {
             startActivity(Intent(this@MainActivity, IntroActivity::class.java))
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             signOut()
         }
 
-        binding.btnNotif.setOnClickListener {
+        binding.btnChat.setOnClickListener {
             startActivity(Intent(this@MainActivity, ChatActivity::class.java))
         }
 
@@ -84,10 +86,14 @@ class MainActivity : AppCompatActivity() {
             isLoadingRecommend(it)
         }
 
-        binding.btnNavCart.setOnClickListener {
+        binding.btnFabCart.setOnClickListener {
             startActivity(Intent(this, CartActivity::class.java))
         }
 
+        binding.btnNavExplorer.setOnClickListener {
+            startActivity(Intent(this, ProductsActivity::class.java))
+
+        }
     }
 
 
@@ -128,7 +134,8 @@ class MainActivity : AppCompatActivity() {
 
     fun recommends(recommends: List<RecommendModel>) {
         binding.rvRecom.adapter = RecommendAdapter(recommends)
-        binding.rvRecom.layoutManager = GridLayoutManager(this, 2)
+        binding.rvRecom.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvRecom.setHasFixedSize(true)
     }
 
 

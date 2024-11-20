@@ -54,9 +54,11 @@ dependencies {
     // Converter Gson untuk Retrofit
     implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
 
-    // Jika menggunakan coroutines
+    // coroutines
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+    implementation (libs.material.v130alpha02)
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
